@@ -67,7 +67,7 @@ class CityPage extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.star,
-                                        color: Colors.blue,
+                                        color: Color.fromARGB(255, 3, 85, 152),
                                         size: 18,
                                       ),
                                       Icon(
