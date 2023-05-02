@@ -14,7 +14,15 @@ class CityPage extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
 
     print(cityData!["places"]);
-
+    var starRate = double.parse(cityData["review"]).floor();
+    var stars = [];
+    for (var i = 0; i < 5; i++) {
+      if (i < starRate) {
+        stars.add(true);
+      } else {
+        stars.add(false);
+      }
+    }
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     return Consumer<AppData>(
         // interligar o home com o provider appdata
@@ -67,33 +75,43 @@ class CityPage extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.star,
-                                        color: Color.fromARGB(255, 3, 85, 152),
+                                        color: stars[0]
+                                            ? Colors.blue
+                                            : Colors.grey,
                                         size: 18,
                                       ),
                                       Icon(
                                         Icons.star,
-                                        color: Colors.blue,
+                                        color: stars[1]
+                                            ? Colors.blue
+                                            : Colors.grey,
                                         size: 18,
                                       ),
                                       Icon(
                                         Icons.star,
-                                        color: Colors.blue,
+                                        color: stars[2]
+                                            ? Colors.blue
+                                            : Colors.grey,
                                         size: 18,
                                       ),
                                       Icon(
                                         Icons.star,
-                                        color: Colors.blue,
+                                        color: stars[3]
+                                            ? Colors.blue
+                                            : Colors.grey,
                                         size: 18,
                                       ),
                                       Icon(
                                         Icons.star,
-                                        color: Colors.blue,
+                                        color: stars[4]
+                                            ? Colors.blue
+                                            : Colors.grey,
                                         size: 18,
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(left: 5),
                                         child: Text(
-                                          "4.2",
+                                          cityData["review"],
                                           style: TextStyle(
                                               fontFamily: "Helvetica Neue",
                                               fontSize: 11,
